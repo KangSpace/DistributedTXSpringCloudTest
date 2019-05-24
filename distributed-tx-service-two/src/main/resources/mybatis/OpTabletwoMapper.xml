@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kangspace.springcloud.dtxs.two.dao.mapper.OpTableTwoMapper">
+  <resultMap id="BaseResultMap" type="org.kangspace.springcloud.dtxs.two.model.OpTableTwo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="op_id" jdbcType="VARCHAR" property="opId" />
+    <result column="op_name" jdbcType="VARCHAR" property="opName" />
+    <result column="op_desc" jdbcType="VARCHAR" property="opDesc" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, op_id, op_name, op_desc, c_time, m_time
+  </sql>
+</mapper>
