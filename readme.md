@@ -1,6 +1,6 @@
-#1. spring-boot-test 为spring boot 测试项目
+#1. LCN-Distributed Transaction SpringCloud Test Project
 ##   内容:
-###   1.1 启动Web服务,Controller 注册 OK
+###   1.1 启动Web服务,Controller 注册
 ###   1.2 Mybatis Mysql 操作数据库
 含tk-mybatis,mybatis,alibaba.druid,   
 ~~读写分离~~(此处取消读写分离,LCN5.0.2.RELEASE版不支持多数据源)
