@@ -35,8 +35,7 @@ public class GraphQLEndPointController {
     @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
 
-
-    @Init
+    @PostConstruct
     public void init() throws IOException {
         URL url = Resources.getResource(SCHEMA_FILE);
         String sdl = Resources.toString(url, Charsets.UTF_8);
