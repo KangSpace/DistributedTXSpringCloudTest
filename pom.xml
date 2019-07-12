@@ -21,6 +21,7 @@
         <module>distributed-tx-service-caller</module>
         <module>distributed-tx-service-one</module>
         <module>distributed-tx-service-two</module>
+        <module>graphql-service</module>
     </modules>
 
     <properties>

@@ -1,0 +1,15 @@
+query findBooks{
+  findBooks {
+    id
+    name
+    author {
+      id
+      name
+      age
+    }
+  }
+  findBook(id:1){
+   id
+   name
+  }
+}

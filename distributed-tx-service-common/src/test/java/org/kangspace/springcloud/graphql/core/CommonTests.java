@@ -1,4 +1,4 @@
-package org.kangspace.springcloud.dtxs.caller;
+package org.kangspace.springcloud.graphql.core;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

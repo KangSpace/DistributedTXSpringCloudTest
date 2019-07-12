@@ -1,0 +1,63 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+# 查询
+type Query {
+    # 无参方法
+    findBooks: [Book]
+    # 有参方法
+    findBook(id:Int,name:String): [Book]
+    findAuthor(id:Int): Author
+}
+
+# 更新
+type Mutation {
+    addBooks(books:[InputBook!]!): [Book!]!
+    removeBooks(bookIds:[Int!]!):[Book!]!
+    updateBook(id:Int,book:InputBook!):Book!
+}
+#如:
+#mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+#  createReview(episode: $ep, review: $review) {
+#    stars
+#    commentary
+#  }
+#}
+#variables
+#{
+#  "ep": "JEDI",
+#  "review": {
+#    "stars": 5,
+#    "commentary": "This is a great movie!"
+#  }
+#}
+
+
+
+# 实例
+type Author{
+    id: Int!
+    name: String!
+    age: Int
+}
+
+type Book {
+    id: Int!
+    name: String!
+    author: Author!
+    publisher: String!
+}
+
+# input 输入类型传参对象
+input InputAuthor {
+    id: Int!
+    name: String!
+    age: Int
+}
+input InputBook {
+    id: Int!
+    name: String!
+    author: InputAuthor!
+    publisher: String!
+}

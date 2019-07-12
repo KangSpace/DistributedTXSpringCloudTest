@@ -1,0 +1,129 @@
+######################################################################################################
+#query/mutation:操作类型 ,opName:操作名称, $a:变量名,[$a:Int=1]:变量默认值
+#@include,@skip:指令,... on Object:内联Fragments/片段解构
+query opName($a:Int=1,$hasAuthor:Boolean!){
+  findBook(id:$a) {
+    id
+    name
+    ... on Book @include(if:$hasAuthor){
+      a:author{
+        i:id
+        n:name
+        ... on Author @skip(if:$hasAuthor){
+        	a:age
+        }
+      }
+  	}
+  }
+}
+query opName2{
+  findBook(id:1) {
+    ... bookFields_
+  }
+}
+# fragment: 片段
+fragment bookFields_ on Book{
+	id
+  name
+  author{
+    ... authorFields_
+  }
+}
+fragment authorFields_ on Author{
+	id
+  name
+}
+
+######################################################################################################
+# 无参查询
+query findBooks{
+  findBooks {
+    id
+    name
+    author {
+      id
+      name
+      age
+    }
+  }
+}
+
+#有参查询(含变量,指令)
+# { "graphiql": true, "variables": { "$a": 1 } }
+query findBook($a:Int=1,$hasAuthor:Boolean!){
+ book:findBook(id:$a,name:"a"){
+    i:id
+    n:name
+    ... on Book @include(if:$hasAuthor){
+      a:author{
+        i:id
+        n:name
+        ... on Author @skip(if:$hasAuthor){
+        	a:age
+        }
+      }
+  	}
+  }
+}
+
+#多查询处理
+query findBookBySubQuery{
+  a:findBooks {
+    id
+    name
+		author{
+      id
+    }
+  }
+  b:findBook(id:1) {
+    id
+    name
+  }
+}
+
+#字段中有参查询
+
+# 片段
+fragment bookFields on Book{
+	id
+  name
+  author{
+    ... authorFields
+  }
+}
+
+fragment authorFields on Author{
+  id
+  name
+  age
+}
+
+######################################################################################################
+#更新
+#添加图书(含变量)
+mutation addBooks{
+  addBooks(books:[{id:2,name:"B2",publisher:"PEP",author:{id:2,name:"a2"}},
+  							  {id:3,name:"B3",publisher:"BNPG",author:{id:3,name:"a3"}}]){
+  	... bookFields
+  }
+}
+mutation addBooksByVar($books:[InputBook!]!){
+  addBooks(books:$books){
+  	... bookFields
+  }
+}
+mutation removeBooks{
+  removeBooks(bookIds:[2,3]){
+    ... bookFields
+  }
+}
+mutation updateBook{
+  updateBook(id:4,book:{id:4,name:"updateBook4",publisher:"updateBNUP",author:{id:4,name:"updateAuthor4"}}){
+    ... bookFields
+  }
+}
+
+
+######################################################################################################
+#variables
+#{"a":1,"hasAuthor":true,"books":[{"id":4,"name":"B4","publisher":"PEP","author":{"id":4,"name":"a4"}},{"id":5,"name":"B5","publisher":"BNPG","author":{"id":5,"name":"a5"}}]}

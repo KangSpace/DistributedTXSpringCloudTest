@@ -1,9 +1,14 @@
 #1. LCN-Distributed Transaction SpringCloud Test Project
 ##   内容:
-###   1.1 启动Web服务,Controller 注册
-###   1.2 Mybatis Mysql 操作数据库
-含tk-mybatis,mybatis,alibaba.druid,   
-~~读写分离~~(此处取消读写分离,LCN5.0.2.RELEASE版不支持多数据源)
+*  SpringMVC Web服务
+*  Mybatis Mysql 操作数据库  
+   含tk-mybatis,mybatis,alibaba.druid,    
+        ~~读写分离~~(此处取消读写分离,LCN5.0.2.RELEASE版不支持多数据源)
+*  SpringCloud 分布式事务 TX-LCN(5.0.2.RELEASE)
+*  ShardingJDBC       
+*  分布式锁 RedLock-Redission       
+*  GraphQL API              
+
 #2. 集成功能:
 ###   2.1 SpringCloud 分布式事务 TX-LCN(5.0.2.RELEASE)
 ###   2.1.1 SpringCloud 分布式事务 TX-LCN(5.0.2.RELEASE)
@@ -188,8 +193,10 @@ LINKS:      [SpringCloud示例](https://www.txlcn.org/zh-cn/docs/demo/springclou
            distributed-tx-service-caller(1001) ->  distributed-tx-service-one(1002)
                                                    @Trans
                                                    -> distributed-tx-service-two(1003)
-####  2.1.2 考虑LCN tx-manager加入k8s, LCN tx-client 接入k8s中的tx-manager  
+####  2.1.2 考虑LCN tx-manager加入k8s, LCN tx-client 接入k8s中的tx-manager
+      未实现  
 ###   2.2 ShardingJDBC
 ###   2.3 分布式锁 RedLock-Redission
-
+###   2.4 GraphQL API
+      [@see DistributedTXSpringCloudTest/graphql-service/graphql-service-readme.md]
    

@@ -1,0 +1,19 @@
+#schema {
+#    query: Query
+#}
+
+# 查询
+type Query {
+    # 无参方法
+    findBooks: [Book]
+    # 有参方法
+    findBook(id:Int,name:String): [Book]
+    findAuthor(id:Int): Author
+}
+
+# 更新
+type Mutation {
+    addBooks(books:[InputBook!]!): [Book!]!
+    removeBooks(bookIds:[Int!]!):[Book!]!
+    updateBook(id:Int,book:InputBook!):Book!
+}

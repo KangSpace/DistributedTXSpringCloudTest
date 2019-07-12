@@ -1,12 +1,12 @@
-package org.kangspace.springcloud.dtxs.caller.model;
+package org.kangspace.springcloud.graphql.core.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Table(name = "op_table_one")
-public class OpTableOne {
+@Table(name = "op_table_caller")
+public class OpTableCaller {
     @Id
     private Long id;
 
