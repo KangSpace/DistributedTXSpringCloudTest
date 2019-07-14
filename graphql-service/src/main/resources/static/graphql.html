@@ -3,8 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>GraphQL Test Page</title>
+    <!--  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/graphiql@0.11.2/graphiql.css" />
+      <script src="//cdn.jsdelivr.net/npm/graphiql@0.11.2/graphiql.js"></script>-->
+    <script src="http://code.jquery.com/jquery-2.2.4.js" ></script>
+    <script type="text/javascript">
+        var diyGraphqlServlet = "http://127.0.0.1:1004/diy/graphql-servlet";
+        var diyGraphql = "http://127.0.0.1:1004/diy/graphql";
+        var queryData = "query findBooks($id:Int){\n" +
+            "  findBooks {\n" +
+            "    id\n" +
+            "    name\n" +
+            "    author {\n" +
+            "      id\n" +
+            "      name\n" +
+            "      age\n" +
+            "    }\n" +
+            "  }\n" +
+            "  findBook(id:$id){\n" +
+            "   id\n" +
+            "   name\n" +
+            "  }\n" +
+            "}";
+        var variablesStr = "{\"id\":1}";
+        $(function(){
+
+           $.ajax({
+               url:diyGraphql,
+               type: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+                   'Accept': 'application/json',
+               },
+               dataType:"json",
+               data:JSON.stringify({query:queryData,variables:variablesStr}),
+               success: function(data){
+                   document.write(JSON.stringify(data));
+               }
+           })
+        });
+
+    </script>
 </head>
 <body>
-
 </body>
 </html>

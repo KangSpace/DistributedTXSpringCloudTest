@@ -7,7 +7,11 @@
   [HowToGraphql： https://www.howtographql.com/basics/2-core-concepts/](https://www.howtographql.com/basics/2-core-concepts/)
   [HowToGraphql(Java)：https://www.howtographql.com/graphql-java/1-getting-started/](https://www.howtographql.com/graphql-java/1-getting-started/)    
   [工具/库推荐： https://www.infoq.cn/article/bl*EA59lRYDE9XlkJGg0](https://www.infoq.cn/article/bl*EA59lRYDE9XlkJGg0)  
-  [30分钟理解GraphQL核心概念：https://segmentfault.com/a/1190000014131950](https://segmentfault.com/a/1190000014131950)  
+  [30分钟理解GraphQL核心概念：https://segmentfault.com/a/1190000014131950](https://segmentfault.com/a/1190000014131950)
+  
+####   Demo Project
+[Record.note](http://note.youdao.com/noteshare?id=10f95018c7d77f427af9e5c0de0ce75b&sub=6C19FF887A4D44ED9C3E179FBA2BE542)
+  
 ####   Commments
 ```
     1. 项目中
@@ -325,7 +329,8 @@ mutation updateBook{
 //Servlet 处理
 graphql-service\src\main\java\org\kangspace\springcloud\graphql\core\graphql\GraphQlEndPoint.java
 org.kangspace.springcloud.graphql.core.graphql.GraphQlEndPoint
-URI: http://127.0.0.1:1004/diy/graphql-servlet 
+URI: http://127.0.0.1:1004/diy/graphql-servlet
+ 
 //Controller处理
 graphql-service\src\main\java\org\kangspace\springcloud\graphql\core\graphql\GraphQLEndPointController.java
 org.kangspace.springcloud.graphql.core.graphql.GraphQLEndPointController
@@ -335,3 +340,43 @@ config file: \graphql-service\src\main\resources\schema-java.graphqls
 test request temp file: \graphql-service\test\java-graphquery
 ```
 ###   1.2 Create GraphQL JS Client
+```
+<script src="http://code.jquery.com/jquery-2.2.4.js" ></script>
+    <script type="text/javascript">
+        var diyGraphqlServlet = "http://127.0.0.1:1004/diy/graphql-servlet";
+        var diyGraphql = "http://127.0.0.1:1004/diy/graphql";
+        var queryData = "query findBooks($id:Int){\n" +
+            "  findBooks {\n" +
+            "    id\n" +
+            "    name\n" +
+            "    author {\n" +
+            "      id\n" +
+            "      name\n" +
+            "      age\n" +
+            "    }\n" +
+            "  }\n" +
+            "  findBook(id:$id){\n" +
+            "   id\n" +
+            "   name\n" +
+            "  }\n" +
+            "}";
+        var variablesStr = "{\"id\":1}";
+        $(function(){
+
+           $.ajax({
+               url:diyGraphql,
+               type: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+                   'Accept': 'application/json',
+               },
+               dataType:"json",
+               data:JSON.stringify({query:queryData,variables:variablesStr}),
+               success: function(data){
+                   document.write(JSON.stringify(data));
+               }
+           })
+        });
+
+    </script>
+```
