@@ -1,0 +1,11 @@
+threads: 16
+nettyThreads: 32
+referenceEnabled: true
+transportMode: "NIO"
+lockWatchdogTimeout: 30000
+keepPubSubOrder: true
+decodeInExecutor: false
+useScriptCache: false
+minCleanUpDelay: 5
+maxCleanUpDelay: 1800
+addressResolverGroupFactory: !<org.redisson.connection.DnsAddressResolverGroupFactory> {}

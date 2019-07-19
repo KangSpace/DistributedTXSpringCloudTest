@@ -22,6 +22,7 @@
         <module>distributed-tx-service-one</module>
         <module>distributed-tx-service-two</module>
         <module>graphql-service</module>
+        <module>redlock-service</module>
     </modules>
 
     <properties>
